@@ -1,0 +1,171 @@
+/**
+ * GitHub API Integration & Dynamic Repo Loader
+ * 
+ * Replace 'YOUR_GITHUB_USERNAME' with your actual GitHub username.
+ */
+const GITHUB_USERNAME = "pietro"; // <-- Inserisci qui il tuo vero username GitHub!
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Set dynamic current year in footer
+  const yearElement = document.getElementById("current-year");
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+  // Update profile and footer links if not set
+  updateGithubLinks(GITHUB_USERNAME);
+
+  // Fetch repositories from GitHub API
+  fetchGithubRepositories(GITHUB_USERNAME);
+});
+
+function updateGithubLinks(username) {
+  if (!username || username === "YOUR_GITHUB_USERNAME") return;
+
+  const profileLink = document.getElementById("profile-github-link");
+  if (profileLink) {
+    profileLink.href = `https://github.com/${username}`;
+  }
+
+  const footerLink = document.querySelector(".footer-github-link");
+  if (footerLink) {
+    footerLink.href = `https://github.com/${username}`;
+  }
+}
+
+async function fetchGithubRepositories(username) {
+  const container = document.getElementById("repos-container");
+  const countBadge = document.getElementById("repo-count-badge");
+
+  if (!container) return;
+
+  // Curated fallback projects in case GitHub API limit is hit or username is still default
+  const fallbackRepos = [
+    {
+      name: "robotics-motion-planning",
+      html_url: `https://github.com/${username}`,
+      description: "Trajectory optimization & obstacle avoidance algorithms for 6-DoF robotic manipulators in ROS2.",
+      language: "C++",
+      stargazers_count: 14,
+      forks_count: 5
+    },
+    {
+      name: "reinforcement-learning-control",
+      html_url: `https://github.com/${username}`,
+      description: "Actor-Critic (PPO / SAC) implementations for adaptive continuous state control in PyTorch.",
+      language: "Python",
+      stargazers_count: 22,
+      forks_count: 8
+    },
+    {
+      name: "autonomous-slam-vision",
+      html_url: `https://github.com/${username}`,
+      description: "Visual-Inertial Odometry and 3D point cloud mapping with Kalman filtering and OpenCV.",
+      language: "Python",
+      stargazers_count: 9,
+      forks_count: 2
+    },
+    {
+      name: "industrial-mpc-benchmark",
+      html_url: `https://github.com/${username}`,
+      description: "High-speed Model Predictive Control benchmarking on simulated multi-input multi-output systems.",
+      language: "MATLAB",
+      stargazers_count: 7,
+      forks_count: 1
+    }
+  ];
+
+  try {
+    const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=12`);
+    
+    if (!response.ok) {
+      throw new Error(`GitHub API error: ${response.status}`);
+    }
+
+    const repos = await response.json();
+
+    // Filter out forks if you only want personal original repos, or keep them
+    const filteredRepos = repos.filter(repo => !repo.fork);
+    const displayList = filteredRepos.length > 0 ? filteredRepos : repos;
+
+    if (displayList.length === 0) {
+      renderRepositories(container, fallbackRepos);
+      if (countBadge) countBadge.textContent = "Showing sample repositories";
+      return;
+    }
+
+    if (countBadge) {
+      countBadge.textContent = `${displayList.length} Public Repositories`;
+    }
+
+    renderRepositories(container, displayList);
+  } catch (err) {
+    console.warn("Could not load GitHub API directly, rendering sample/cached projects:", err);
+    if (countBadge) countBadge.textContent = "Showing sample research projects";
+    renderRepositories(container, fallbackRepos);
+  }
+}
+
+function renderRepositories(container, repos) {
+  container.innerHTML = "";
+
+  repos.forEach(repo => {
+    const card = document.createElement("a");
+    card.href = repo.html_url;
+    card.target = "_blank";
+    card.rel = "noopener noreferrer";
+    card.className = "repo-card";
+
+    const languageColor = getLanguageColor(repo.language);
+
+    card.innerHTML = `
+      <div>
+        <div class="repo-header">
+          <i class="fa-regular fa-folder-open"></i>
+          <span class="repo-badge"><i class="fa-solid fa-arrow-up-right-from-square"></i> View</span>
+        </div>
+        <h3 class="repo-title">${escapeHTML(repo.name)}</h3>
+        <p class="repo-desc">${escapeHTML(repo.description || "Research codebase & implementation.")}</p>
+      </div>
+      <div class="repo-footer">
+        <div class="repo-lang">
+          <span class="lang-circle" style="background-color: ${languageColor}"></span>
+          <span>${escapeHTML(repo.language || "Code")}</span>
+        </div>
+        <div class="repo-stats">
+          <span title="Stars"><i class="fa-regular fa-star"></i> ${repo.stargazers_count ?? 0}</span>
+          <span title="Forks"><i class="fa-solid fa-code-fork"></i> ${repo.forks_count ?? 0}</span>
+        </div>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function getLanguageColor(lang) {
+  const colors = {
+    "Python": "#3572A5",
+    "C++": "#f34b7d",
+    "C": "#555555",
+    "MATLAB": "#e16737",
+    "Rust": "#dea584",
+    "JavaScript": "#f1e05a",
+    "HTML": "#e34c26",
+    "Jupyter Notebook": "#DA5B0B"
+  };
+  return colors[lang] || "#00f0ff";
+}
+
+function escapeHTML(str) {
+  if (!str) return "";
+  return str.replace(/[&<>'"]/g, 
+    tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag] || tag)
+  );
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pietro | Robotics, Automation & AI Researcher</title>
+  <meta name="description" content="Personal academic and portfolio website of Pietro - PhD Student in Robotics, Automation & AI.">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#about" class="nav-logo">
+        <i class="fa-solid fa-robot"></i>
+        <span>Pietro<span class="accent">.dev</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Repositories</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero / Profile Section -->
+    <section id="about" class="section hero">
+      <div class="hero-content">
+        <div class="profile-frame">
+          <!-- Placeholder avatar: replace 'profile.jpg' with your photo -->
+          <img src="profile.jpg" alt="Profile Picture" class="profile-img" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=600&h=600&q=80';">
+          <div class="status-badge">
+            <span class="status-dot"></span> PhD Researcher
+          </div>
+        </div>
+
+        <div class="hero-text">
+          <div class="role-tag">
+            <i class="fa-solid fa-microchip"></i> Automation Engineering • Robotics • Artificial Intelligence
+          </div>
+          <h1 class="hero-title">Hi, I'm <span class="gradient-text">Pietro</span></h1>
+          <p class="hero-bio">
+            I am currently a <strong>Ph.D. student</strong> specializing in <em>Automation Engineering</em>, 
+            <em>Robotics</em>, and <em>Applied Machine Learning</em>. My research investigates autonomous systems, 
+            intelligent control architectures, and robotic manipulation combining model-based control with learning-based perception.
+          </p>
+
+          <div class="hero-social-links">
+            <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener" class="btn btn-outline" id="profile-github-link">
+              <i class="fa-brands fa-github"></i> GitHub Profile
+            </a>
+            <a href="mailto:your.email@university.edu" class="btn btn-primary">
+              <i class="fa-solid fa-envelope"></i> Get in Touch
+            </a>
+            <a href="https://scholar.google.com" target="_blank" rel="noopener" class="btn btn-ghost" title="Google Scholar">
+              <i class="fa-solid fa-graduation-cap"></i> Google Scholar
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="btn btn-ghost" title="LinkedIn">
+              <i class="fa-brands fa-linkedin"></i> LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Interests / Quick Overview -->
+    <section id="research" class="section">
+      <h2 class="section-title"><i class="fa-solid fa-brain"></i> Core Research & Focus Areas</h2>
+      <div class="topics-grid">
+        <div class="topic-card">
+          <i class="fa-solid fa-robot topic-icon"></i>
+          <h3>Autonomous Robotics</h3>
+          <p>Kinematics, dynamics, motion planning, ROS2, and real-time control algorithms for robotic manipulators and mobile agents.</p>
+        </div>
+        <div class="topic-card">
+          <i class="fa-solid fa-network-wired topic-icon"></i>
+          <h3>Intelligent Control & Automation</h3>
+          <p>Model Predictive Control (MPC), adaptive feedback systems, state estimation (Kalman filters), and industrial automation.</p>
+        </div>
+        <div class="topic-card">
+          <i class="fa-solid fa-eye topic-icon"></i>
+          <h3>AI & Computer Vision</h3>
+          <p>Reinforcement learning, neural networks, 3D perception, object pose estimation, and sensor fusion for robotic decision-making.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Academic Education Section -->
+    <section id="education" class="section">
+      <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Academic Background</h2>
+      <div class="timeline">
+        <!-- PhD -->
+        <div class="timeline-item current">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-degree">Ph.D. in Automation Engineering & Robotics</span>
+              <span class="timeline-period current-period">Present</span>
+            </div>
+            <div class="timeline-institution">Department of Information Engineering / Robotics Lab</div>
+            <p class="timeline-description">
+              Conducting research on autonomous robotic systems, trajectory optimization, and deep reinforcement learning applied to real-world physical systems.
+            </p>
+            <div class="timeline-tags">
+              <span>Robotic Control</span>
+              <span>Reinforcement Learning</span>
+              <span>ROS / ROS2</span>
+              <span>State Estimation</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Master -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-degree">M.Sc. in Automation & Control Engineering</span>
+              <span class="timeline-period">2021 – 2023</span>
+            </div>
+            <div class="timeline-institution">University of Studies</div>
+            <p class="timeline-description">
+              Graduated with honors (Cum Laude). Master thesis focused on advanced non-linear control strategies and vision-based robotic manipulation.
+            </p>
+            <div class="timeline-tags">
+              <span>Non-linear Control</span>
+              <span>Computer Vision</span>
+              <span>Optimization</span>
+              <span>Matlab/Simulink</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bachelor -->
+        <div class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <span class="timeline-degree">B.Sc. in Automation / Information Engineering</span>
+              <span class="timeline-period">2018 – 2021</span>
+            </div>
+            <div class="timeline-institution">University of Studies</div>
+            <p class="timeline-description">
+              Comprehensive foundational coursework in automatic control, electronics, computer science, signals & systems, and mathematical modeling.
+            </p>
+            <div class="timeline-tags">
+              <span>Signals & Systems</span>
+              <span>Feedback Control</span>
+              <span>Embedded Systems</span>
+              <span>C/C++</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Repositories Section -->
+    <section id="projects" class="section">
+      <div class="section-header-flex">
+        <div>
+          <h2 class="section-title"><i class="fa-brands fa-github"></i> GitHub Repositories</h2>
+          <p class="section-subtitle">Featured projects, open-source codebases, and research code.</p>
+        </div>
+        <div class="repo-filter-info" id="repo-count-badge">
+          Loading repositories...
+        </div>
+      </div>
+
+      <!-- Live repositories will be dynamically injected here via script.js -->
+      <div class="repos-grid" id="repos-container">
+        <!-- Fallback cards displayed while loading or if GitHub API rate limit occurs -->
+        <div class="repo-card skeleton">
+          <div class="repo-header">
+            <i class="fa-regular fa-folder-open"></i>
+            <span class="repo-badge">Loading</span>
+          </div>
+          <h3 class="repo-title">Loading repositories from GitHub...</h3>
+          <p class="repo-desc">Connecting to GitHub REST API to fetch your latest public projects and stars.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Footer Section -->
+    <section id="contact" class="section contact-section">
+      <h2 class="section-title"><i class="fa-solid fa-paper-plane"></i> Get In Touch</h2>
+      <p class="contact-text">
+        I am always open to discussing academic collaborations, research opportunities, or technical inquiries in robotics, automation, and AI.
+      </p>
+      <div class="contact-buttons">
+        <a href="mailto:your.email@university.edu" class="btn btn-primary">
+          <i class="fa-solid fa-envelope"></i> Send an Email
+        </a>
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener" class="btn btn-outline footer-github-link">
+          <i class="fa-brands fa-github"></i> View all on GitHub
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; <span id="current-year"></span> Pietro. Built with semantic HTML, modern CSS & vanilla JavaScript. Hosted on GitHub Pages.</p>
+      <div class="back-to-top">
+        <a href="#about"><i class="fa-solid fa-arrow-up"></i> Top</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Custom JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
