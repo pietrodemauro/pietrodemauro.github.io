@@ -100,9 +100,16 @@ async function fetchGithubRepositories(username) {
 
     renderRepositories(container, displayList);
   } catch (err) {
-    console.warn("Could not load GitHub API directly, rendering sample/cached projects:", err);
-    if (countBadge) countBadge.textContent = "Showing sample research projects";
-    renderRepositories(container, fallbackRepos);
+    console.error("GitHub API fetch error:", err);
+    if (countBadge) countBadge.textContent = "Unable to load repositories";
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; padding: 2rem; border: 1px dashed var(--border-light); border-radius: var(--radius-md); text-align: center; color: var(--text-secondary);">
+        <p style="margin-bottom: 0.75rem;"><i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b;"></i> Could not load repositories automatically (rate limit or network issue).</p>
+        <a href="https://github.com/${username}" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="display: inline-flex;">
+          <i class="fa-brands fa-github"></i> View @${username} on GitHub
+        </a>
+      </div>
+    `;
   }
 }
 
