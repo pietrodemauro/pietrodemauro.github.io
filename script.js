@@ -152,16 +152,16 @@ function renderRepositories(container, repos) {
 
 function getLanguageColor(lang) {
   const colors = {
-    "Python": "#3572A5",
-    "C++": "#f34b7d",
-    "C": "#555555",
-    "MATLAB": "#e16737",
-    "Rust": "#dea584",
-    "JavaScript": "#f1e05a",
-    "HTML": "#e34c26",
-    "Jupyter Notebook": "#DA5B0B"
+    "Python": "#52525b",
+    "C++": "#3f3f46",
+    "C": "#71717a",
+    "MATLAB": "#52525b",
+    "Rust": "#3f3f46",
+    "JavaScript": "#71717a",
+    "HTML": "#a1a1aa",
+    "Jupyter Notebook": "#52525b"
   };
-  return colors[lang] || "#00f0ff";
+  return colors[lang] || "#71717a";
 }
 
 function escapeHTML(str) {
