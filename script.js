@@ -3,7 +3,7 @@
  * 
  * Replace 'YOUR_GITHUB_USERNAME' with your actual GitHub username.
  */
-const GITHUB_USERNAME = "pietro"; // <-- Inserisci qui il tuo vero username GitHub!
+const GITHUB_USERNAME = "pietrodemauro"; // <-- Inserisci qui il tuo vero username GitHub!
 
 document.addEventListener("DOMContentLoaded", () => {
   // Set dynamic current year in footer
